@@ -32,4 +32,11 @@ public class ActivityService {
         }
         return activityRepo.save(activity);
     }
+
+    public void deleteActivity(Long id) {
+        if (!activityRepo.existsById(id)) {
+            throw new ActivityDoesNotExistException(id);
+        }
+        activityRepo.deleteById(id);
+    }
 }

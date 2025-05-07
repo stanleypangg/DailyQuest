@@ -31,4 +31,9 @@ public class ActivityController {
     public ActivityModel updateActivity(@Valid @RequestBody ActivityModel activity) {
         return activityService.updateActivity(activity);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteActivity(@PathVariable(name = "id") Long id) {
+        activityService.deleteActivity(id);
+    }
 }
