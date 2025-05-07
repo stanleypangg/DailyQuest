@@ -1,0 +1,25 @@
+package com.dailyquest.dailyquest.activity;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ActivityService {
+
+    private final ActivityRepo activityRepo;
+
+    @Autowired
+    public ActivityService(ActivityRepo activityRepo) {
+        this.activityRepo = activityRepo;
+    }
+
+    public List<ActivityModel> findAll() {
+        return activityRepo.findAll();
+    }
+
+    public ActivityModel createActivity(ActivityModel activity) {
+        return activityRepo.save(activity);
+    }
+}
