@@ -1,5 +1,6 @@
 package com.dailyquest.dailyquest.activity;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +23,14 @@ public class ActivityController {
     }
 
     @PostMapping
-    public ActivityModel createActivity(@RequestBody ActivityModel activity) {
+    public ActivityModel createActivity(@Valid @RequestBody ActivityModel activity) {
         return activityService.createActivity(activity);
     }
 
-
+    @PutMapping
+    public ActivityModel updateActivity(@Valid @RequestBody ActivityModel activity) {
+        return activityService.updateActivity(activity);
+    }
 
 
 

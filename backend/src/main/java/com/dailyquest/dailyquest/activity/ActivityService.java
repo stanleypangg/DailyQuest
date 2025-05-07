@@ -22,4 +22,8 @@ public class ActivityService {
     public ActivityModel createActivity(ActivityModel activity) {
         return activityRepo.save(activity);
     }
+
+    public ActivityModel updateActivity(ActivityModel activity) {
+        return activityRepo.save(activity);
+    }
 }
