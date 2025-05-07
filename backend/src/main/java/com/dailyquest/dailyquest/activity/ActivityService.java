@@ -1,5 +1,6 @@
 package com.dailyquest.dailyquest.activity;
 
+import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,11 @@ public class ActivityService {
     }
 
     public ActivityModel updateActivity(ActivityModel activity) {
+        Long id = activity.getId();
+        boolean exists = activityRepo.existsById(id);
+        if (!exists) {
+            throw new ActivityDoesNotExistException(id);
+        }
         return activityRepo.save(activity);
     }
 }

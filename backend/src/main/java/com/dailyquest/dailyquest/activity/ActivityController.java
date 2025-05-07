@@ -31,10 +31,4 @@ public class ActivityController {
     public ActivityModel updateActivity(@Valid @RequestBody ActivityModel activity) {
         return activityService.updateActivity(activity);
     }
-
-
-
-
-
-
 }
