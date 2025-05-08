@@ -24,13 +24,12 @@ public class ActivityService {
         return activityRepo.save(activity);
     }
 
-    public ActivityModel updateActivity(ActivityModel activity) {
-        Long id = activity.getId();
+    public ActivityModel updateActivity(Long id) {
         boolean exists = activityRepo.existsById(id);
         if (!exists) {
             throw new ActivityDoesNotExistException(id);
         }
-        return activityRepo.save(activity);
+        return activityRepo.save(activityRepo.findById(id));
     }
 
     public void deleteActivity(Long id) {

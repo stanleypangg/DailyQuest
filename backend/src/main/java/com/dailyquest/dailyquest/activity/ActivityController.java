@@ -27,8 +27,8 @@ public class ActivityController {
         return activityService.createActivity(activity);
     }
 
-    @PutMapping
-    public ActivityModel updateActivity(@Valid @RequestBody ActivityModel activity) {
+    @PutMapping(value = "/{id}")
+    public ActivityModel updateActivity(@PathVariable(name = "id") Long id) {
         return activityService.updateActivity(activity);
     }
 

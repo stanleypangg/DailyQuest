@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,16 +21,13 @@ public class ActivityModel {
     private String title;
 
     @NotNull
-    private LocalDateTime startTime;
-    @NotNull
-    private LocalDateTime endTime;
+    private LocalDate logDate;
 
     public ActivityModel() {
     }
 
-    public ActivityModel(LocalDateTime startTime, LocalDateTime endTime, String title) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public ActivityModel(LocalDate logDate, String title) {
+        this.logDate = logDate;
         this.title = title;
     }
 
@@ -49,19 +47,12 @@ public class ActivityModel {
         this.id = id;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public LocalDate getLogDate() {
+        return logDate;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setLogDate(LocalDate logDate) {
+        this.logDate = logDate;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
 }
