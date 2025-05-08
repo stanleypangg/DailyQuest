@@ -28,8 +28,10 @@ public class ActivityController {
     }
 
     @PutMapping(value = "/{id}")
-    public ActivityModel updateActivity(@PathVariable(name = "id") Long id) {
-        return activityService.updateActivity(activity);
+    public ActivityModel updateActivity(
+            @PathVariable(name = "id") Long id,
+            @RequestBody ActivityModel requestBody) {
+        return activityService.updateActivity(id, requestBody);
     }
 
     @DeleteMapping(value = "/{id}")

@@ -1,10 +1,12 @@
 package com.dailyquest.dailyquest.activity;
 
 import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ActivityService {
@@ -24,12 +26,19 @@ public class ActivityService {
         return activityRepo.save(activity);
     }
 
-    public ActivityModel updateActivity(Long id) {
-        boolean exists = activityRepo.existsById(id);
-        if (!exists) {
-            throw new ActivityDoesNotExistException(id);
-        }
-        return activityRepo.save(activityRepo.findById(id));
+    @Transactional
+    public ActivityModel updateActivity(Long id, ActivityModel requestBody) {
+        ActivityModel activityModel = activityRepo.findById(id).orElseThrow(
+                () -> new ActivityDoesNotExistException(id)
+        );
+
+        if (requestBody.getTitle() != null)
+            activityModel.setTitle(requestBody.getTitle());
+
+        if (requestBody.getLogDate() != null)
+            activityModel.setLogDate(requestBody.getLogDate());
+
+        return activityModel;
     }
 
     public void deleteActivity(Long id) {
