@@ -1,7 +1,6 @@
 package com.dailyquest.dailyquest.habit;
 
-import com.dailyquest.dailyquest.activity.ActivityModel;
-import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
+import com.dailyquest.dailyquest.habit.exception.HabitDoesNotExistException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class HabitService {
     @Transactional
     public HabitModel updateHabit(Long id, HabitModel requestBody) {
         HabitModel habitModel = habitRepo.findById(id).orElseThrow(
-                () -> new ActivityDoesNotExistException(id)
+                () -> new HabitDoesNotExistException(id)
         );
         if (requestBody.getUser() != null) {
             habitModel.setUser(requestBody.getUser());
@@ -55,7 +54,7 @@ public class HabitService {
 
     public void deleteHabit(Long id) {
         if (!habitRepo.existsById(id)) {
-            throw new ActivityDoesNotExistException(id);
+            throw new HabitDoesNotExistException(id);
         }
         habitRepo.deleteById(id);
     }
