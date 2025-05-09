@@ -1,6 +1,6 @@
 package com.dailyquest.dailyquest.user;
 
-import com.dailyquest.dailyquest.activity.userprofile.UserProfileModel;
+import com.dailyquest.dailyquest.userprofile.UserProfileModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
