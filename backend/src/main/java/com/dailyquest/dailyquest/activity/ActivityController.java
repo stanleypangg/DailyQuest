@@ -27,7 +27,7 @@ public class ActivityController {
         return activityService.createActivity(activity);
     }
 
-    @PutMapping(value = "/{id}")
+    @PatchMapping(value = "/{id}")
     public ActivityModel updateActivity(
             @PathVariable(name = "id") Long id,
             @RequestBody ActivityModel requestBody) {
