@@ -11,9 +11,62 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    private String userName;
+    @Column(unique = true)
+    private String username;
+    @NotBlank
+    @Column(unique = true)
+    private String email;
     @NotBlank
     private String hashedPassword;
     @OneToOne
     private UserProfileModel userProfile;
+
+    public UserModel() {
+    }
+
+    public UserModel(String username, String email, String hashedPassword) {
+        this.username = username;
+        this.email = email;
+        this.hashedPassword = hashedPassword;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
+
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
+    }
+
+    public UserProfileModel getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfileModel userProfile) {
+        this.userProfile = userProfile;
+    }
 }
