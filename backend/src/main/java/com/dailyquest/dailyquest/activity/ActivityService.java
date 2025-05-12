@@ -1,7 +1,11 @@
 package com.dailyquest.dailyquest.activity;
 
+import com.dailyquest.dailyquest.activity.dto.ActivityDTO;
 import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
+import com.dailyquest.dailyquest.habit.HabitModel;
+import com.dailyquest.dailyquest.habit.HabitRepo;
 import jakarta.transaction.Transactional;
+import org.aspectj.apache.bcel.classfile.annotation.RuntimeInvisAnnos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +29,16 @@ public class ActivityService {
     public ActivityModel createActivity(ActivityModel activity) {
         return activityRepo.save(activity);
     }
+
+//    public ActivityModel createActivity(ActivityDTO request) {
+//        // Retrieve the existing habit from the database
+//        HabitModel habit = HabitRepo.findById(request.getHabitId())
+//                .orElseThrow(() -> new RuntimeException("Habit not found"));
+//
+//        // Create activity with existing habit
+//        ActivityModel activity = new ActivityModel(request.getLogDate(), request.getTitle(), habit);
+//        return activityRepo.save(activity);
+//    }
 
     @Transactional
     public ActivityModel updateActivity(Long id, ActivityModel requestBody) {
