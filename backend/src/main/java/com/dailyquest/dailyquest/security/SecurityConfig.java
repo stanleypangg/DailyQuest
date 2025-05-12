@@ -1,4 +1,4 @@
-    package com.dailyquest.dailyquest.config;
+    package com.dailyquest.dailyquest.security;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
