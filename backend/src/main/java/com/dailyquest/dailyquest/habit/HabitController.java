@@ -1,5 +1,6 @@
 package com.dailyquest.dailyquest.habit;
 
+import com.dailyquest.dailyquest.habit.dto.HabitDTO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class HabitController {
     }
 
     @GetMapping
-    public List<HabitModel> findAll() { return habitService.findAll(); }
+    public List<HabitDTO> findAll() { return habitService.findAll(); }
 
     @PostMapping
     public HabitModel createHabit(@Valid @RequestBody HabitModel habit) {
