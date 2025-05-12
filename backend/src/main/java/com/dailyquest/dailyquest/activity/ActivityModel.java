@@ -1,9 +1,7 @@
 package com.dailyquest.dailyquest.activity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.dailyquest.dailyquest.habit.HabitModel;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,12 +21,15 @@ public class ActivityModel {
     @NotNull
     private LocalDate logDate;
 
+    private Integer habitId;
+
     public ActivityModel() {
     }
 
-    public ActivityModel(LocalDate logDate, String title) {
+    public ActivityModel(LocalDate logDate, String title, Integer habitId) {
         this.logDate = logDate;
         this.title = title;
+        this.habitId = habitId;
     }
 
     public String getTitle() {
@@ -55,4 +56,7 @@ public class ActivityModel {
         this.logDate = logDate;
     }
 
+    public Integer getHabitId() { return habitId; }
+
+    public void setHabitId(Integer habitId) { this.habitId = habitId; }
 }
