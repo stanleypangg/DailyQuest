@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/activity")
+@RequestMapping(value = "/activities")
 public class ActivityController {
 
     private final ActivityService activityService;
