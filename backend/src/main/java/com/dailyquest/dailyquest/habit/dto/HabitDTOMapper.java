@@ -4,7 +4,6 @@ import com.dailyquest.dailyquest.habit.HabitModel;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class HabitDTOMapper implements Function<HabitModel, HabitDTO> {
