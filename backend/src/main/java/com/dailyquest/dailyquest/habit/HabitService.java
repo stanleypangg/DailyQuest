@@ -30,9 +30,9 @@ public class HabitService {
         HabitModel habitModel = habitRepo.findById(id).orElseThrow(
                 () -> new HabitDoesNotExistException(id)
         );
-        if (requestBody.getUser() != null) {
-            habitModel.setUser(requestBody.getUser());
-        }
+//        if (requestBody.getUser() != null) {
+//            habitModel.setUser(requestBody.getUser());
+//        }
         if (requestBody.getName() != null) {
             habitModel.setName(requestBody.getName());
         }
