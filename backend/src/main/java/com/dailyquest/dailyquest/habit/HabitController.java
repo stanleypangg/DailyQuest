@@ -1,7 +1,10 @@
 package com.dailyquest.dailyquest.habit;
 
+import com.dailyquest.dailyquest.habit.dto.CreateHabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTO;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +23,11 @@ public class HabitController {
     public List<HabitDTO> findAll() { return habitService.findAll(); }
 
     @PostMapping
-    public HabitModel createHabit(@Valid @RequestBody HabitModel habit) {
-        return habitService.createHabit(habit);
+    public HabitDTO createHabit(
+            @Valid @RequestBody CreateHabitDTO habit,
+            @AuthenticationPrincipal UserDetails userDetails)
+    {
+        return habitService.createHabit(habit, userDetails.getUsername());
     }
 
     @PatchMapping(value = "/{id}")
@@ -35,5 +41,4 @@ public class HabitController {
     public void deleteHabit(@PathVariable(name = "id") Long id) {
         habitService.deleteHabit(id);
     }
-
 }

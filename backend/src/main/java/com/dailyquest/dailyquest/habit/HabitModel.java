@@ -1,6 +1,6 @@
 package com.dailyquest.dailyquest.habit;
 
-import com.dailyquest.dailyquest.userprofile.UserProfileModel;
+import com.dailyquest.dailyquest.user.UserModel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -13,12 +13,14 @@ public class HabitModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @NotNull
-//    @ManyToOne
-//    private UserProfileModel user; // user that this habit belongs too
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "habit_id", nullable = false, updatable = false)
+    private UserModel user; // user that this habit belongs too
     @NotBlank
     private String name;
+    @NotNull
     private Integer goalCount; // X amount of times per goalPeriod
+    @NotBlank
     private String goalPeriod;
     private Integer currentStreak;
     private Integer bestStreak;
@@ -26,14 +28,11 @@ public class HabitModel {
     public HabitModel() {
     }
 
-
-    public HabitModel(UserProfileModel user, String name, Integer goalCount, String goalPeriod, Integer currentStreak, Integer bestStreak) {
-//        this.user = user;
+    public HabitModel(UserModel user, String name, Integer goalCount, String goalPeriod) {
+        this.user = user;
         this.name = name;
         this.goalCount = goalCount;
         this.goalPeriod = goalPeriod;
-        this.currentStreak = currentStreak;
-        this.bestStreak = bestStreak;
     }
 
     public Long getId() {
@@ -44,13 +43,13 @@ public class HabitModel {
         this.id = id;
     }
 
-//    public UserProfileModel getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(UserProfileModel user) {
-//        this.user = user;
-//    }
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
+    }
 
     public String getName() {
         return name;
