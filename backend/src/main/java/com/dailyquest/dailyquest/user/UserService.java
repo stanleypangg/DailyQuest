@@ -2,6 +2,7 @@ package com.dailyquest.dailyquest.user;
 
 import com.dailyquest.dailyquest.user.dto.CreateUserDto;
 import com.dailyquest.dailyquest.user.dto.UserDto;
+import com.dailyquest.dailyquest.user.dto.UserDtoMapper;
 import com.dailyquest.dailyquest.user.exceptions.EmailAlreadyTakenException;
 import com.dailyquest.dailyquest.user.exceptions.UsernameAlreadyTakenException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,13 @@ public class UserService {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
+    private final UserDtoMapper userDtoMapper;
 
     @Autowired
-    public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder, UserDtoMapper userDtoMapper) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
+        this.userDtoMapper = userDtoMapper;
     }
 
 //    public List<UserDto> getAllUsers() {
@@ -46,9 +49,7 @@ public class UserService {
 
         userRepo.save(userModel);
 
-        return new UserDto(
-                userModel.getUsername(),
-                userModel.getEmail()
-        );
+        return userDtoMapper.apply(userModel);
+
     }
 }

@@ -26,12 +26,8 @@ public class ActivityController {
     @GetMapping
     public List<ActivityDto> findAll() {
         return activityService.findAll();
-    }
 
-//    @PostMapping
-//    public ActivityModel createActivity(@Valid @RequestBody ActivityModel activity) {
-//        return activityService.createActivity(activity);
-//    }
+    }
 
     @PostMapping
     public ResponseEntity<ActivityDto> createActivity(
