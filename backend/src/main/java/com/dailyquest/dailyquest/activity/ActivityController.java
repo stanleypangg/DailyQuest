@@ -28,16 +28,16 @@ public class ActivityController {
         return activityService.findAll();
     }
 
-    @PostMapping
-    public ActivityModel createActivity(@Valid @RequestBody ActivityModel activity) {
-        return activityService.createActivity(activity);
-    }
-
 //    @PostMapping
-//    public ResponseEntity<ActivityModel> createActivity(@Valid @RequestBody ActivityDTO request) {
-//        ActivityModel activity = activityService.createActivity(request);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(activity);
+//    public ActivityModel createActivity(@Valid @RequestBody ActivityModel activity) {
+//        return activityService.createActivity(activity);
 //    }
+
+    @PostMapping
+    public ResponseEntity<ActivityModel> createActivity(@Valid @RequestBody ActivityDTO request) {
+        ActivityModel activity = activityService.createActivity(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(activity);
+    }
 
     @PatchMapping(value = "/{id}")
     public ActivityModel updateActivity(

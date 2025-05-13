@@ -16,29 +16,31 @@ import java.util.Optional;
 public class ActivityService {
 
     private final ActivityRepo activityRepo;
+    private final HabitRepo habitRepo;
 
     @Autowired
-    public ActivityService(ActivityRepo activityRepo) {
+    public ActivityService(ActivityRepo activityRepo, HabitRepo habitRepo) {
         this.activityRepo = activityRepo;
+        this.habitRepo = habitRepo;
     }
 
     public List<ActivityModel> findAll() {
         return activityRepo.findAll();
     }
 
-    public ActivityModel createActivity(ActivityModel activity) {
-        return activityRepo.save(activity);
-    }
-
-//    public ActivityModel createActivity(ActivityDTO request) {
-//        // Retrieve the existing habit from the database
-//        HabitModel habit = HabitRepo.findById(request.getHabitId())
-//                .orElseThrow(() -> new RuntimeException("Habit not found"));
-//
-//        // Create activity with existing habit
-//        ActivityModel activity = new ActivityModel(request.getLogDate(), request.getTitle(), habit);
+//    public ActivityModel createActivity(ActivityModel activity) {
 //        return activityRepo.save(activity);
 //    }
+
+    public ActivityModel createActivity(ActivityDTO request) {
+        // Retrieve the existing habit from the database using the injected instance
+        HabitModel habit = habitRepo.findById(request.getHabitId())
+                .orElseThrow(() -> new RuntimeException("Habit not found"));
+
+        // Create activity with existing habit
+        ActivityModel activity = new ActivityModel(request.getLogDate(), request.getTitle(), habit);
+        return activityRepo.save(activity);
+    }
 
     @Transactional
     public ActivityModel updateActivity(Long id, ActivityModel requestBody) {
