@@ -2,6 +2,7 @@ package com.dailyquest.dailyquest.habit;
 
 import com.dailyquest.dailyquest.habit.dto.CreateHabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTO;
+import com.dailyquest.dailyquest.habit.dto.UpdateHabitDTO;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,10 +35,11 @@ public class HabitController {
 
     // TODO: change HabitModel response to DTO
     @PatchMapping(value = "/{id}")
-    public HabitModel updateHabit(
+    public HabitDTO updateHabit(
             @PathVariable(name = "id") Long id,
-            @RequestBody HabitModel requestBody) {
-        return habitService.updateHabit(id, requestBody);
+            @RequestBody UpdateHabitDTO requestBody,
+            @AuthenticationPrincipal UserDetails userDetails) {
+        return habitService.updateHabit(id, requestBody, userDetails.getUsername());
     }
 
     @DeleteMapping(value = "/{id}")

@@ -3,13 +3,16 @@ package com.dailyquest.dailyquest.habit;
 import com.dailyquest.dailyquest.habit.dto.CreateHabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTOMapper;
+import com.dailyquest.dailyquest.habit.dto.UpdateHabitDTO;
 import com.dailyquest.dailyquest.habit.exception.HabitDoesNotExistException;
 import com.dailyquest.dailyquest.user.UserModel;
 import com.dailyquest.dailyquest.user.UserRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,32 +48,31 @@ public class HabitService {
         return habitDTOMapper.apply(habit);
     }
 
-    // TODO: looks like updating user may need to be updated to fetch user
     @Transactional
-    public HabitModel updateHabit(Long id, HabitModel requestBody) {
+    public HabitDTO updateHabit(Long id, UpdateHabitDTO dto, String username) {
         HabitModel habitModel = habitRepo.findById(id).orElseThrow(
                 () -> new HabitDoesNotExistException(id)
         );
-        if (requestBody.getUser() != null) {
-            habitModel.setUser(requestBody.getUser());
-        }
-        if (requestBody.getName() != null) {
-            habitModel.setName(requestBody.getName());
-        }
-        if (requestBody.getGoalCount() != null) {
-            habitModel.setGoalCount(requestBody.getGoalCount());
-        }
-        if (requestBody.getGoalPeriod() != null) {
-            habitModel.setGoalPeriod(requestBody.getGoalPeriod());
-        }
-        if (requestBody.getCurrentStreak() != null) {
-            habitModel.setCurrentStreak(requestBody.getCurrentStreak());
-        }
-        if (requestBody.getBestStreak() != null) {
-            habitModel.setBestStreak(requestBody.getBestStreak());
+
+        // Verify this habit belongs to user
+        if (!habitModel.getUser().getUsername().equals(username)) {
+            throw new ResponseStatusException(
+                    HttpStatus.FORBIDDEN,
+                    "You do not own habit #" + id
+            );
         }
 
-        return habitModel;
+        if (dto.name() != null) {
+            habitModel.setName(dto.name());
+        }
+        if (dto.goalCount() != null) {
+            habitModel.setGoalCount(dto.goalCount());
+        }
+        if (dto.goalPeriod() != null) {
+            habitModel.setGoalPeriod(dto.goalPeriod());
+        }
+
+        return habitDTOMapper.apply(habitModel);
     }
 
     public void deleteHabit(Long id) {
