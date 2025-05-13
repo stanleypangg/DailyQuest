@@ -4,6 +4,7 @@ import com.dailyquest.dailyquest.habit.dto.CreateHabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTOMapper;
 import com.dailyquest.dailyquest.habit.dto.UpdateHabitDTO;
+import com.dailyquest.dailyquest.habit.exception.HabitAccessDeniedException;
 import com.dailyquest.dailyquest.habit.exception.HabitDoesNotExistException;
 import com.dailyquest.dailyquest.user.UserModel;
 import com.dailyquest.dailyquest.user.UserRepo;
@@ -56,10 +57,7 @@ public class HabitService {
 
         // Verify this habit belongs to user
         if (!habitModel.getUser().getUsername().equals(username)) {
-            throw new ResponseStatusException(
-                    HttpStatus.FORBIDDEN,
-                    "You do not own habit #" + id
-            );
+            throw new HabitAccessDeniedException(id);
         }
 
         if (dto.name() != null) {
