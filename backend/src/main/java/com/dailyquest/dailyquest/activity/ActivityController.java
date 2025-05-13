@@ -24,7 +24,7 @@ public class ActivityController {
     }
 
     @GetMapping
-    public List<ActivityModel> findAll() {
+    public List<ActivityDto> findAll() {
         return activityService.findAll();
     }
 

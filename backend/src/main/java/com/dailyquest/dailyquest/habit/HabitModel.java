@@ -1,10 +1,12 @@
 package com.dailyquest.dailyquest.habit;
 
 import com.dailyquest.dailyquest.userprofile.UserProfileModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class HabitModel {
 

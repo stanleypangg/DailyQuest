@@ -18,10 +18,10 @@ public class ActivityModel {
     private String title;
     @NotNull
     private LocalDate logDate;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "habit_id", nullable = false, updatable = false)
     private HabitModel habit;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private UserModel user;
 

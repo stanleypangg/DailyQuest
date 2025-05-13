@@ -1,6 +1,7 @@
 package com.dailyquest.dailyquest.activity;
 
 import com.dailyquest.dailyquest.activity.dto.ActivityDto;
+import com.dailyquest.dailyquest.activity.dto.ActivityDtoMapper;
 import com.dailyquest.dailyquest.activity.dto.CreateActivityDTO;
 import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
 import com.dailyquest.dailyquest.habit.HabitModel;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ActivityService {
@@ -21,16 +23,21 @@ public class ActivityService {
     private final ActivityRepo activityRepo;
     private final HabitRepo habitRepo;
     private final UserRepo userRepo;
+    private final ActivityDtoMapper activityDtoMapper;
 
     @Autowired
-    public ActivityService(ActivityRepo activityRepo, HabitRepo habitRepo, UserRepo userRepo) {
+    public ActivityService(ActivityRepo activityRepo, HabitRepo habitRepo, UserRepo userRepo, ActivityDtoMapper activityDtoMapper) {
         this.activityRepo = activityRepo;
         this.habitRepo = habitRepo;
         this.userRepo = userRepo;
+        this.activityDtoMapper = activityDtoMapper;
     }
 
-    public List<ActivityModel> findAll() {
-        return activityRepo.findAll();
+    public List<ActivityDto> findAll() {
+        return activityRepo.findAll()
+                .stream()
+                .map(activityDtoMapper)
+                .collect(Collectors.toList());
     }
 
     // TODO: change username to Long id
@@ -45,14 +52,7 @@ public class ActivityService {
         ActivityModel activity = new ActivityModel(request.logDate(), request.title(), habit, user);
         activityRepo.save(activity);
 
-        // TODO: use mappers instead of directly crating
-        return new ActivityDto(
-                activity.getId(),
-                activity.getTitle(),
-                activity.getLogDate(),
-                new HabitDTO(activity.getHabit().getId(), activity.getHabit().getName()),
-                new UserDto(activity.getUser().getUsername(), activity.getUser().getEmail())
-        );
+        return activityDtoMapper.apply(activity);
     }
 
     @Transactional
