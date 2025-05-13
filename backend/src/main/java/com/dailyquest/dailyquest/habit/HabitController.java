@@ -25,6 +25,14 @@ public class HabitController {
         return habitService.findAll(userDetails.getUsername());
     }
 
+    @GetMapping("/{id}")
+    public HabitDTO getHabitById(
+            @PathVariable Long id,
+            @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        return habitService.getHabitById(id, userDetails.getUsername())
+    }
+
     @PostMapping
     public HabitDTO createHabit(
             @Valid @RequestBody CreateHabitDTO habit,

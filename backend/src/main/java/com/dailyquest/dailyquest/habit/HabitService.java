@@ -39,14 +39,26 @@ public class HabitService {
                 .collect(Collectors.toList());
     }
 
+    public HabitDTO getHabitById(Long id, String username) {
+        HabitModel habitModel = habitRepo.findById(id)
+                .orElseThrow(() -> new HabitDoesNotExistException(id));
+
+        // Verify user ownership
+        if (!habitModel.getUser().getUsername().equals(username)) {
+            throw new HabitAccessDeniedException(id);
+        }
+
+        return habitDTOMapper.apply(habitModel);
+    }
+
     public HabitDTO createHabit(CreateHabitDTO dto, String username) {
         UserModel user = userRepo.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
-        HabitModel habit = new HabitModel(user, dto.name(), dto.goalCount(), dto.goalPeriod());
-        habitRepo.save(habit);
+        HabitModel habitModel = new HabitModel(user, dto.name(), dto.goalCount(), dto.goalPeriod());
+        habitRepo.save(habitModel);
 
-        return habitDTOMapper.apply(habit);
+        return habitDTOMapper.apply(habitModel);
     }
 
     @Transactional
