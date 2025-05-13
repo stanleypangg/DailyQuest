@@ -40,8 +40,8 @@ public class UserService {
 
         UserModel userModel = new UserModel(
                 createUserDto.username(),
-                hashedPassword,
-                createUserDto.email()
+                createUserDto.email(),
+                hashedPassword
         );
 
         userRepo.save(userModel);
