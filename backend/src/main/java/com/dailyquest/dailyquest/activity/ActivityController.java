@@ -1,7 +1,13 @@
 package com.dailyquest.dailyquest.activity;
 
+import com.dailyquest.dailyquest.activity.dto.ActivityDTO;
+import com.dailyquest.dailyquest.habit.HabitModel;
+import com.dailyquest.dailyquest.habit.HabitRepo;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +28,15 @@ public class ActivityController {
         return activityService.findAll();
     }
 
+//    @PostMapping
+//    public ActivityModel createActivity(@Valid @RequestBody ActivityModel activity) {
+//        return activityService.createActivity(activity);
+//    }
+
     @PostMapping
-    public ActivityModel createActivity(@Valid @RequestBody ActivityModel activity) {
-        return activityService.createActivity(activity);
+    public ResponseEntity<ActivityModel> createActivity(@Valid @RequestBody ActivityDTO request) {
+        ActivityModel activity = activityService.createActivity(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(activity);
     }
 
     @PatchMapping(value = "/{id}")

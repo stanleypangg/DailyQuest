@@ -1,24 +1,33 @@
 package com.dailyquest.dailyquest.habit;
 
+import com.dailyquest.dailyquest.habit.dto.HabitDTO;
+import com.dailyquest.dailyquest.habit.dto.HabitDTOMapper;
 import com.dailyquest.dailyquest.habit.exception.HabitDoesNotExistException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HabitService {
 
     private final HabitRepo habitRepo;
 
+    private final HabitDTOMapper habitDTOMapper;
+
     @Autowired
-    public HabitService(HabitRepo habitRepo) {
+    public HabitService(HabitRepo habitRepo, HabitDTOMapper habitDTOMapper) {
         this.habitRepo = habitRepo;
+        this.habitDTOMapper = habitDTOMapper;
     }
 
-    public List<HabitModel> findAll() {
-        return habitRepo.findAll();
+    public List<HabitDTO> findAll() {
+        return habitRepo.findAll()
+                .stream()
+                .map(habitDTOMapper)
+                .collect(Collectors.toList());
     }
 
     public HabitModel createHabit(HabitModel habit) {
@@ -30,9 +39,9 @@ public class HabitService {
         HabitModel habitModel = habitRepo.findById(id).orElseThrow(
                 () -> new HabitDoesNotExistException(id)
         );
-        if (requestBody.getUser() != null) {
-            habitModel.setUser(requestBody.getUser());
-        }
+//        if (requestBody.getUser() != null) {
+//            habitModel.setUser(requestBody.getUser());
+//        }
         if (requestBody.getName() != null) {
             habitModel.setName(requestBody.getName());
         }

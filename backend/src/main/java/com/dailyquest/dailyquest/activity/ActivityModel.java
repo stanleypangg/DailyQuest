@@ -1,14 +1,11 @@
 package com.dailyquest.dailyquest.activity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.dailyquest.dailyquest.habit.HabitModel;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class ActivityModel {
@@ -23,12 +20,17 @@ public class ActivityModel {
     @NotNull
     private LocalDate logDate;
 
+    @ManyToOne
+    @JoinColumn(name = "habit_id")
+    private HabitModel habit;
+
     public ActivityModel() {
     }
 
-    public ActivityModel(LocalDate logDate, String title) {
+    public ActivityModel(LocalDate logDate, String title, HabitModel habit) {
         this.logDate = logDate;
         this.title = title;
+        this.habit = habit;
     }
 
     public String getTitle() {
@@ -54,5 +56,9 @@ public class ActivityModel {
     public void setLogDate(LocalDate logDate) {
         this.logDate = logDate;
     }
+
+    public HabitModel getHabit() { return habit; }
+
+    public void setHabit(HabitModel habit) { this.habit = habit; }
 
 }

@@ -11,9 +11,9 @@ public class HabitModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    @ManyToOne
-    private UserProfileModel user; // user that this habit belongs too
+//    @NotNull
+//    @ManyToOne
+//    private UserProfileModel user; // user that this habit belongs too
     @NotBlank
     private String name;
     private Integer goalCount; // X amount of times per goalPeriod
@@ -26,7 +26,7 @@ public class HabitModel {
 
 
     public HabitModel(UserProfileModel user, String name, Integer goalCount, String goalPeriod, Integer currentStreak, Integer bestStreak) {
-        this.user = user;
+//        this.user = user;
         this.name = name;
         this.goalCount = goalCount;
         this.goalPeriod = goalPeriod;
@@ -42,13 +42,13 @@ public class HabitModel {
         this.id = id;
     }
 
-    public UserProfileModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserProfileModel user) {
-        this.user = user;
-    }
+//    public UserProfileModel getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(UserProfileModel user) {
+//        this.user = user;
+//    }
 
     public String getName() {
         return name;
