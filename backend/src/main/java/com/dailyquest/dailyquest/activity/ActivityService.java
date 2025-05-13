@@ -6,10 +6,8 @@ import com.dailyquest.dailyquest.activity.dto.CreateActivityDTO;
 import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
 import com.dailyquest.dailyquest.habit.HabitModel;
 import com.dailyquest.dailyquest.habit.HabitRepo;
-import com.dailyquest.dailyquest.habit.dto.HabitDTO;
 import com.dailyquest.dailyquest.user.UserModel;
 import com.dailyquest.dailyquest.user.UserRepo;
-import com.dailyquest.dailyquest.user.dto.UserDto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,8 +31,8 @@ public class ActivityService {
         this.activityDtoMapper = activityDtoMapper;
     }
 
-    public List<ActivityDto> findAll() {
-        return activityRepo.findAll()
+    public List<ActivityDto> findAll(String username) {
+        return activityRepo.findAllByUsername(username)
                 .stream()
                 .map(activityDtoMapper)
                 .collect(Collectors.toList());

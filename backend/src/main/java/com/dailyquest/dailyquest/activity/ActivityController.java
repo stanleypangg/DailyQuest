@@ -24,9 +24,8 @@ public class ActivityController {
     }
 
     @GetMapping
-    public List<ActivityDto> findAll() {
-        return activityService.findAll();
-
+    public List<ActivityDto> findAll(@AuthenticationPrincipal UserDetails userDetails) {
+        return activityService.findAll(userDetails.getUsername());
     }
 
     @PostMapping
