@@ -32,6 +32,7 @@ public class HabitController {
         return habitService.createHabit(habit, userDetails.getUsername());
     }
 
+    // TODO: change HabitModel response to DTO
     @PatchMapping(value = "/{id}")
     public HabitModel updateHabit(
             @PathVariable(name = "id") Long id,
