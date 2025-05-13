@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface ActivityRepo extends JpaRepository<ActivityModel, Long> {
     @Query(
-            value = "SELECT * FROM activity_model WHERE user.username = :username",
-            nativeQuery = true
+            "SELECT a FROM ActivityModel a WHERE a.user.username = :username"
     )
     List<ActivityModel> findAllByUsername(@Param("username") String username);
 }
