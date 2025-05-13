@@ -7,8 +7,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ActivityRepo extends JpaRepository<ActivityModel, Long> {
-    @Query(
-            "SELECT a FROM ActivityModel a WHERE a.user.username = :username"
-    )
+    @Query("SELECT a FROM ActivityModel a WHERE a.user.username = :username")
     List<ActivityModel> findAllByUsername(@Param("username") String username);
 }

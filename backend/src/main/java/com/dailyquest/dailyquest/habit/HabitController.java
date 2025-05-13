@@ -20,7 +20,9 @@ public class HabitController {
     }
 
     @GetMapping
-    public List<HabitDTO> findAll() { return habitService.findAll(); }
+    public List<HabitDTO> findAll(@AuthenticationPrincipal UserDetails userDetails) {
+        return habitService.findAll(userDetails.getUsername());
+    }
 
     @PostMapping
     public HabitDTO createHabit(

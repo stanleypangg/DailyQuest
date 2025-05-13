@@ -28,8 +28,8 @@ public class HabitService {
         this.userRepo = userRepo;
     }
 
-    public List<HabitDTO> findAll() {
-        return habitRepo.findAll()
+    public List<HabitDTO> findAll(String username) {
+        return habitRepo.findAllByUsername(username)
                 .stream()
                 .map(habitDTOMapper)
                 .collect(Collectors.toList());
