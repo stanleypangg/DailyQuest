@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/habits")
+@RequestMapping(value = "/api/habits")
 public class HabitController {
 
     private final HabitService habitService;
