@@ -5,6 +5,7 @@ import com.dailyquest.dailyquest.user.UserModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 
@@ -17,6 +18,7 @@ public class ActivityModel {
     @NotBlank
     private String title;
     @NotNull
+    @PastOrPresent
     private LocalDate logDate;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "habit_id", nullable = false, updatable = false)

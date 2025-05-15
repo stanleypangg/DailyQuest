@@ -3,6 +3,7 @@ package com.dailyquest.dailyquest.activity;
 import com.dailyquest.dailyquest.activity.dto.ActivityDto;
 import com.dailyquest.dailyquest.activity.dto.ActivityDtoMapper;
 import com.dailyquest.dailyquest.activity.dto.CreateActivityDTO;
+import com.dailyquest.dailyquest.activity.dto.UpdateActivityDTO;
 import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
 import com.dailyquest.dailyquest.activity.exception.HabitNotFoundException;
 import com.dailyquest.dailyquest.activity.exception.UserNotFoundException;
@@ -40,7 +41,6 @@ public class ActivityService {
                 .collect(Collectors.toList());
     }
 
-    // TODO: change username to Long id
     public ActivityDto createActivity(CreateActivityDTO request, String username) {
         // Retrieve the existing habit from the database using the injected instance
         HabitModel habit = habitRepo.findById(request.habitId()).orElseThrow(
@@ -56,16 +56,16 @@ public class ActivityService {
     }
 
     @Transactional
-    public ActivityModel updateActivity(Long id, ActivityModel requestBody) {
+    public ActivityModel updateActivity(Long id, UpdateActivityDTO requestBody) {
         ActivityModel activityModel = activityRepo.findById(id).orElseThrow(
                 () -> new ActivityDoesNotExistException(id)
         );
 
-        if (requestBody.getTitle() != null)
-            activityModel.setTitle(requestBody.getTitle());
+        if (requestBody.title() != null)
+            activityModel.setTitle(requestBody.title());
 
-        if (requestBody.getLogDate() != null)
-            activityModel.setLogDate(requestBody.getLogDate());
+        if (requestBody.logDate() != null)
+            activityModel.setLogDate(requestBody.logDate());
 
         return activityModel;
     }
