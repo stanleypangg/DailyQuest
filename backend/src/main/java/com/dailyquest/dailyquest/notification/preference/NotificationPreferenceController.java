@@ -1,5 +1,6 @@
 package com.dailyquest.dailyquest.notification.preference;
 
+import com.dailyquest.dailyquest.notification.dto.NotificationPreferenceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +22,7 @@ public class NotificationPreferenceController {
     }
 
     @GetMapping
-    public List<NotificationPreferenceModel> findAllPreferences(@AuthenticationPrincipal UserDetails userDetails) {
+    public List<NotificationPreferenceDTO> findAllPreferences(@AuthenticationPrincipal UserDetails userDetails) {
         return notificationPreferenceService.findAllPreferences(userDetails.getUsername());
     }
 }

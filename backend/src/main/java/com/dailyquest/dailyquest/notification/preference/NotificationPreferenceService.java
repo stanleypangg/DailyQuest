@@ -1,19 +1,29 @@
 package com.dailyquest.dailyquest.notification.preference;
 
+import com.dailyquest.dailyquest.notification.dto.NotificationPreferenceDTO;
+import com.dailyquest.dailyquest.notification.dto.NotificationPreferenceDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NotificationPreferenceService {
 
     private final NotificationPreferenceRepo notificationPreferenceRepo;
+    private final NotificationPreferenceDTOMapper notificationPreferenceDTOMapper;
 
     @Autowired
-    public NotificationPreferenceService(NotificationPreferenceRepo notificationPreferenceRepo) {
+    public NotificationPreferenceService(NotificationPreferenceRepo notificationPreferenceRepo, NotificationPreferenceDTOMapper notificationPreferenceDTOMapper) {
         this.notificationPreferenceRepo = notificationPreferenceRepo;
+        this.notificationPreferenceDTOMapper = notificationPreferenceDTOMapper;
     }
 
-    public List<NotificationPreferenceModel> findAllPreferences(String username) {}
+    public List<NotificationPreferenceDTO> findAllPreferences(String username) {
+        return notificationPreferenceRepo.getNotificationPreferenceModelByUsername(username)
+                .stream()
+                .map(notificationPreferenceDTOMapper)
+                .collect(Collectors.toList());
+    }
 }
