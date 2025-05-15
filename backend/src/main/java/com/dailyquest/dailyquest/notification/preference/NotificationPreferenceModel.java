@@ -1,5 +1,7 @@
-package com.dailyquest.dailyquest.notification;
+package com.dailyquest.dailyquest.notification.preference;
 
+import com.dailyquest.dailyquest.notification.preference.NotificationChannel;
+import com.dailyquest.dailyquest.notification.preference.NotificationFrequency;
 import com.dailyquest.dailyquest.userprofile.UserProfileModel;
 import jakarta.persistence.*;
 
@@ -50,6 +52,14 @@ public class NotificationPreferenceModel {
 
     public void setChannel(NotificationChannel channel) {
         this.channel = channel;
+    }
+
+    public NotificationFrequency getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(NotificationFrequency frequency) {
+        this.frequency = frequency;
     }
 
     public Integer getLeadTimeMinutes() {
