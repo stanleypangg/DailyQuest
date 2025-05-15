@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalTime;
 
 @Entity
-public class NotificationPreference {
+public class NotificationPreferenceModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +14,8 @@ public class NotificationPreference {
     // Channel: how the user wants to be notified
     @Enumerated(EnumType.STRING)
     private NotificationChannel channel;
+    @Enumerated(EnumType.STRING)
+    private NotificationFrequency frequency;
     private Integer leadTimeMinutes;
     private boolean enabled;
     private LocalTime quietHoursStart;
@@ -22,10 +24,10 @@ public class NotificationPreference {
     @JoinColumn(name = "user_profile_id", nullable = false, updatable = false)
     private UserProfileModel userProfile;
 
-    public NotificationPreference() {
+    public NotificationPreferenceModel() {
     }
 
-    public NotificationPreference(NotificationChannel channel, Integer leadTimeMinutes, boolean enabled, LocalTime quietHoursStart, LocalTime quietHoursEnd, UserProfileModel userProfile) {
+    public NotificationPreferenceModel(NotificationChannel channel, Integer leadTimeMinutes, boolean enabled, LocalTime quietHoursStart, LocalTime quietHoursEnd, UserProfileModel userProfile) {
         this.channel = channel;
         this.leadTimeMinutes = leadTimeMinutes;
         this.enabled = enabled;
