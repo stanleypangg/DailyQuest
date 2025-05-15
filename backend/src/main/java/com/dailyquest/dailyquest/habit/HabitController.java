@@ -30,7 +30,7 @@ public class HabitController {
             @PathVariable Long id,
             @AuthenticationPrincipal UserDetails userDetails
     ) {
-        return habitService.getHabitById(id, userDetails.getUsername())
+        return habitService.getHabitById(id, userDetails.getUsername());
     }
 
     @PostMapping

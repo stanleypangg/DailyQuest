@@ -4,6 +4,8 @@ import com.dailyquest.dailyquest.activity.dto.ActivityDto;
 import com.dailyquest.dailyquest.activity.dto.ActivityDtoMapper;
 import com.dailyquest.dailyquest.activity.dto.CreateActivityDTO;
 import com.dailyquest.dailyquest.activity.exception.ActivityDoesNotExistException;
+import com.dailyquest.dailyquest.activity.exception.HabitNotFoundException;
+import com.dailyquest.dailyquest.activity.exception.UserNotFoundException;
 import com.dailyquest.dailyquest.habit.HabitModel;
 import com.dailyquest.dailyquest.habit.HabitRepo;
 import com.dailyquest.dailyquest.user.UserModel;
@@ -41,10 +43,10 @@ public class ActivityService {
     // TODO: change username to Long id
     public ActivityDto createActivity(CreateActivityDTO request, String username) {
         // Retrieve the existing habit from the database using the injected instance
-        HabitModel habit = habitRepo.findById(request.habitId())
-                .orElseThrow(() -> new RuntimeException("Habit not found")); // TODO: implement custom exception
-        UserModel user = userRepo.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found")); // TODO: implement custom exception
+        HabitModel habit = habitRepo.findById(request.habitId()).orElseThrow(
+                () -> new HabitNotFoundException(request.habitId()));
+        UserModel user = userRepo.findByUsername(username).orElseThrow(
+                () -> new UserNotFoundException(username));
 
         // Create activity with existing habit
         ActivityModel activity = new ActivityModel(request.logDate(), request.title(), habit, user);
