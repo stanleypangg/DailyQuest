@@ -1,4 +1,4 @@
-package com.dailyquest.dailyquest.notification.preference;
+package com.dailyquest.dailyquest.notification.enums;
 
 public enum NotificationChannel {
     EMAIL,

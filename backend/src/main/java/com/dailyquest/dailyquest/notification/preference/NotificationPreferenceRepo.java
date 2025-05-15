@@ -6,9 +6,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-@Service
 public interface NotificationPreferenceRepo extends JpaRepository<NotificationPreferenceModel, Long> {
-    @Query("SELECT n FROM NotificationPreferenceModel n WHERE n.userProfile.user.username = :username")
-    List<NotificationPreferenceModel> getNotificationPreferenceModelByUsername(@Param("username") String username);
+    List<NotificationPreferenceModel> findByUserProfileUserUsername(String username);
+    Optional<NotificationPreferenceModel> findByUserProfileUsernameAndId(String username, Long id);
 }

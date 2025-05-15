@@ -1,7 +1,7 @@
 package com.dailyquest.dailyquest.notification.preference;
 
-import com.dailyquest.dailyquest.notification.preference.NotificationChannel;
-import com.dailyquest.dailyquest.notification.preference.NotificationFrequency;
+import com.dailyquest.dailyquest.notification.enums.NotificationChannel;
+import com.dailyquest.dailyquest.notification.enums.NotificationFrequency;
 import com.dailyquest.dailyquest.userprofile.UserProfileModel;
 import jakarta.persistence.*;
 

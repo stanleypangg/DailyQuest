@@ -1,0 +1,11 @@
+package com.dailyquest.dailyquest.notification.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class NotificationPreferenceNotFoundException extends RuntimeException {
+    public NotificationPreferenceNotFoundException(Long id) {
+        super("Notification Preference with id " + id + " not found");
+    }
+}

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,13 @@ public class NotificationPreferenceController {
     @GetMapping
     public List<NotificationPreferenceDTO> findAllPreferences(@AuthenticationPrincipal UserDetails userDetails) {
         return notificationPreferenceService.findAllPreferences(userDetails.getUsername());
+    }
+
+    @GetMapping("/{id}")
+    public NotificationPreferenceDTO findPreferenceById(
+            @PathVariable("id") Long id,
+            @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        return notificationPreferenceService.findPreferenceById(id, userDetails.getUsername());
     }
 }
