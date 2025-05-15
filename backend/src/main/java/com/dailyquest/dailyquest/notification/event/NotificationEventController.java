@@ -1,6 +1,6 @@
-package com.dailyquest.dailyquest.notifications.event;
+package com.dailyquest.dailyquest.notification.event;
 
-import com.dailyquest.dailyquest.notifications.dto.NotificationEventDto;
+import com.dailyquest.dailyquest.notification.dto.NotificationEventDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

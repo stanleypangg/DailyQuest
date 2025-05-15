@@ -1,6 +1,6 @@
-package com.dailyquest.dailyquest.notifications.dto;
+package com.dailyquest.dailyquest.notification.dto;
 
-import com.dailyquest.dailyquest.notifications.event.NotificationEventModel;
+import com.dailyquest.dailyquest.notification.event.NotificationEventModel;
 
 import java.time.LocalDateTime;
 

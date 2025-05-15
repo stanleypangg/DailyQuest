@@ -1,4 +1,4 @@
-package com.dailyquest.dailyquest.notifications.event;
+package com.dailyquest.dailyquest.notification.event;
 
 public enum NotificationStatus {
     PENDING,
