@@ -1,4 +1,4 @@
-package com.dailyquest.dailyquest.notifications;
+package com.dailyquest.dailyquest.notifications.event;
 
 import org.springframework.stereotype.Service;
 

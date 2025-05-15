@@ -1,4 +1,4 @@
-package com.dailyquest.dailyquest.notifications;
+package com.dailyquest.dailyquest.notifications.event;
 
 import com.dailyquest.dailyquest.notifications.dto.NotificationEventDto;
 import org.springframework.beans.factory.annotation.Autowired;

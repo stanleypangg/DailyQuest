@@ -1,4 +1,4 @@
-package com.dailyquest.dailyquest.notifications;
+package com.dailyquest.dailyquest.notifications.event;
 
 import com.dailyquest.dailyquest.habit.HabitModel;
 import jakarta.persistence.*;

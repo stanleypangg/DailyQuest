@@ -1,4 +1,4 @@
-package com.dailyquest.dailyquest.notifications;
+package com.dailyquest.dailyquest.notifications.event;
 
 public interface NotificationSender {
     void sendNotification(NotificationEventModel event);

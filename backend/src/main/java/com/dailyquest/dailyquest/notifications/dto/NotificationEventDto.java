@@ -1,8 +1,7 @@
 package com.dailyquest.dailyquest.notifications.dto;
 
-import com.dailyquest.dailyquest.notifications.NotificationEventModel;
+import com.dailyquest.dailyquest.notifications.event.NotificationEventModel;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record NotificationEventDto(
