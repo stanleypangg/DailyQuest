@@ -34,4 +34,10 @@ public class NotificationPreferenceService {
                         .orElseThrow(() -> new NotificationPreferenceNotFoundException(id));
         return notificationPreferenceDTOMapper.apply((notificationPreferenceModel));
     }
+
+    public void deletePreference(long id, String username) {
+        if (notificationPreferenceRepo.deleteByUserProfileUserUsernameAndId(username, id) == 0) {
+            throw new NotificationPreferenceNotFoundException(id);
+        }
+    }
 }

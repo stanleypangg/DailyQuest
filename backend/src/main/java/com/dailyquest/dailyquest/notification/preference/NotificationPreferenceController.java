@@ -59,6 +59,7 @@ public class NotificationPreferenceController {
             @AuthenticationPrincipal UserDetails userDetails,
             @PathParam("id") Long id
     ) {
+        notificationPreferenceService.deletePreference(id, userDetails.getUsername());
         return ResponseEntity.ok().build();
     }
 }
