@@ -2,6 +2,7 @@ package com.dailyquest.dailyquest.notification.preference;
 
 import com.dailyquest.dailyquest.notification.dto.NotificationPreferenceDTO;
 import com.dailyquest.dailyquest.notification.dto.NotificationPreferenceDTOMapper;
+import com.dailyquest.dailyquest.notification.exception.NotificationPreferenceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,16 @@ public class NotificationPreferenceService {
     }
 
     public List<NotificationPreferenceDTO> findAllPreferences(String username) {
-        return notificationPreferenceRepo.getNotificationPreferenceModelByUsername(username)
+        return notificationPreferenceRepo.findByUserProfileUserUsername(username)
                 .stream()
                 .map(notificationPreferenceDTOMapper)
                 .collect(Collectors.toList());
+    }
+
+    public NotificationPreferenceDTO findPreferenceById(Long id, String username) {
+        NotificationPreferenceModel notificationPreferenceModel =
+                notificationPreferenceRepo.findByUserProfileUsernameAndId(username, id)
+                        .orElseThrow(() -> new NotificationPreferenceNotFoundException(id));
+        return notificationPreferenceDTOMapper.apply((notificationPreferenceModel));
     }
 }

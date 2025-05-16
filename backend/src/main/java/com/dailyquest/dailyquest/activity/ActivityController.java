@@ -2,6 +2,7 @@ package com.dailyquest.dailyquest.activity;
 
 import com.dailyquest.dailyquest.activity.dto.ActivityDto;
 import com.dailyquest.dailyquest.activity.dto.CreateActivityDTO;
+import com.dailyquest.dailyquest.activity.dto.UpdateActivityDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,6 @@ public class ActivityController {
             @Valid @RequestBody CreateActivityDTO request,
             @AuthenticationPrincipal UserDetails userDetails
     ) {
-        // TODO: change getUsername to getId
         ActivityDto activity = activityService.createActivity(request, userDetails.getUsername());
         return ResponseEntity.status(HttpStatus.CREATED).body(activity);
     }
@@ -41,7 +41,7 @@ public class ActivityController {
     @PatchMapping(value = "/{id}")
     public ActivityModel updateActivity(
             @PathVariable(name = "id") Long id,
-            @RequestBody ActivityModel requestBody) {
+            @Valid @RequestBody UpdateActivityDTO requestBody) {
         return activityService.updateActivity(id, requestBody);
     }
 

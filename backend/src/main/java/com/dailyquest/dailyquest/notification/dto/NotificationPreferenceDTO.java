@@ -1,7 +1,7 @@
 package com.dailyquest.dailyquest.notification.dto;
 
-import com.dailyquest.dailyquest.notification.preference.NotificationChannel;
-import com.dailyquest.dailyquest.notification.preference.NotificationFrequency;
+import com.dailyquest.dailyquest.notification.enums.NotificationChannel;
+import com.dailyquest.dailyquest.notification.enums.NotificationFrequency;
 
 import java.time.LocalTime;
 
