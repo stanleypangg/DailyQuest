@@ -57,8 +57,7 @@ public class NotificationPreferenceController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePreference(
             @AuthenticationPrincipal UserDetails userDetails,
-            @PathParam("id") Long id
-    ) {
+            @PathVariable Long id) {
         notificationPreferenceService.deletePreference(id, userDetails.getUsername());
         return ResponseEntity.ok().build();
     }
