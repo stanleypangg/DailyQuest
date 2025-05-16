@@ -30,7 +30,7 @@ public class NotificationPreferenceService {
 
     public NotificationPreferenceDTO findPreferenceById(Long id, String username) {
         NotificationPreferenceModel notificationPreferenceModel =
-                notificationPreferenceRepo.findByUserProfileUsernameAndId(username, id)
+                notificationPreferenceRepo.findByUserProfileUserUsernameAndId(username, id)
                         .orElseThrow(() -> new NotificationPreferenceNotFoundException(id));
         return notificationPreferenceDTOMapper.apply((notificationPreferenceModel));
     }
