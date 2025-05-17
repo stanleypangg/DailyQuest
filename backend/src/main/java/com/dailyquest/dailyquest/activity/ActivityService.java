@@ -35,7 +35,7 @@ public class ActivityService {
     }
 
     public List<ActivityDto> findAll(String username) {
-        return activityRepo.findAllByUsername(username)
+        return activityRepo.findAllByUserUsername(username)
                 .stream()
                 .map(activityDtoMapper)
                 .collect(Collectors.toList());
