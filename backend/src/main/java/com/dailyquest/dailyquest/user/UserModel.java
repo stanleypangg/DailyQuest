@@ -4,6 +4,8 @@ import com.dailyquest.dailyquest.userprofile.UserProfileModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Objects;
+
 @Entity
 public class UserModel {
 
@@ -68,5 +70,18 @@ public class UserModel {
 
     public void setUserProfile(UserProfileModel userProfile) {
         this.userProfile = userProfile;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserModel userModel = (UserModel) o;
+        return Objects.equals(id, userModel.id) && Objects.equals(username, userModel.username) && Objects.equals(email, userModel.email) && Objects.equals(hashedPassword, userModel.hashedPassword) && Objects.equals(userProfile, userModel.userProfile);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, email, hashedPassword, userProfile);
     }
 }
