@@ -1,5 +1,6 @@
 package com.dailyquest.dailyquest.notification.event;
 
+import com.dailyquest.dailyquest.notification.dto.CreateNoficationEventDTO;
 import com.dailyquest.dailyquest.notification.dto.NotificationEventDTOMapper;
 import com.dailyquest.dailyquest.notification.dto.NotificationEventDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class NotificationEventController {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<NotificationEventDTO> createNotificationEvent(@RequestBody NotificationEventDTO requestDto) {
-        NotificationEventDTO event = notificationService.scheduleNotification(requestDto.id());
-        return ResponseEntity.status(HttpStatus.CREATED).body(notificationEventDTOMapper.apply(event));
+    public ResponseEntity<NotificationEventDTO> createNotificationEvent(@RequestBody CreateNoficationEventDTO requestDto) {
+        NotificationEventDTO event = notificationService.scheduleNotification(requestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(event);
     }
 
 }
