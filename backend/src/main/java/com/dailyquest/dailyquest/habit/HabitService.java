@@ -33,7 +33,7 @@ public class HabitService {
     }
 
     public List<HabitDTO> findAll(String username) {
-        return habitRepo.findAllByUsername(username)
+        return habitRepo.findAllByUserUsername(username)
                 .stream()
                 .map(habitDTOMapper)
                 .collect(Collectors.toList());

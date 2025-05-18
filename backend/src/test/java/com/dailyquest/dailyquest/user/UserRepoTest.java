@@ -1,8 +1,5 @@
 package com.dailyquest.dailyquest.user;
 
-import com.dailyquest.dailyquest.user.UserModel;
-import com.dailyquest.dailyquest.user.UserRepo;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +20,11 @@ public class UserRepoTest {
     @BeforeEach
    void setup(@Autowired UserRepo repo) {
         underTest.deleteAll();
-        user = new UserModel(USERNAME, EMAIL, "testPassword");
+
+        user = new UserModel();
+        user.setUsername(USERNAME);
+        user.setEmail(EMAIL);
+
         underTest.saveAndFlush(user);
     }
 
