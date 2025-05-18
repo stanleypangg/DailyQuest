@@ -53,6 +53,7 @@ public class NotificationPreferenceService {
         } catch (IOException e) {
             throw new RuntimeException("Error serializing to JSON " + e);
         }
+        return null;
     }
 
     public void deletePreference(long id, String username) {

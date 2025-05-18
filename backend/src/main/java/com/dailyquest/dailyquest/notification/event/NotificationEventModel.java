@@ -1,6 +1,7 @@
 package com.dailyquest.dailyquest.notification.event;
 
 import com.dailyquest.dailyquest.habit.HabitModel;
+import com.dailyquest.dailyquest.notification.enums.NotificationStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
