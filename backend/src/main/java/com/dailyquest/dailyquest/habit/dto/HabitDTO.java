@@ -1,12 +1,15 @@
 package com.dailyquest.dailyquest.habit.dto;
 
 import com.dailyquest.dailyquest.user.dto.UserDto;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 public record HabitDTO(
-        Long id,
-        String name,
-        Integer goalCount,
-        String goalPeriod,
-        UserDto user
+        @NotNull Long id,
+        @NotBlank String name,
+        @NotNull @PositiveOrZero Integer goalCount,
+        @NotBlank String goalPeriod,
+        @NotNull UserDto user
 ){
 }

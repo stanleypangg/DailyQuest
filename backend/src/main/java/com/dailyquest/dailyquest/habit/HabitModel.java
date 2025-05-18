@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -20,10 +21,13 @@ public class HabitModel {
     private String name;
     @NotNull
     private Integer goalCount; // X amount of times per goalPeriod
-    @NotBlank
+    @NotBlank // TODO: maybe this should be an enum instead?
+    @PositiveOrZero
     private String goalPeriod;
-    private Integer currentStreak;
-    private Integer bestStreak;
+    @PositiveOrZero
+    private Integer currentStreak = 0;
+    @PositiveOrZero
+    private Integer bestStreak = 0;
 
     public HabitModel() {
     }

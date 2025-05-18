@@ -4,14 +4,18 @@ import com.dailyquest.dailyquest.habit.dto.CreateHabitDTO;
 import com.dailyquest.dailyquest.habit.dto.HabitDTO;
 import com.dailyquest.dailyquest.habit.dto.UpdateHabitDTO;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/habits")
+@Validated
 public class HabitController {
 
     private final HabitService habitService;
@@ -34,24 +38,26 @@ public class HabitController {
     }
 
     @PostMapping
-    public HabitDTO createHabit(
+    public ResponseEntity<HabitDTO> createHabit(
             @Valid @RequestBody CreateHabitDTO habit,
             @AuthenticationPrincipal UserDetails userDetails)
     {
-        return habitService.createHabit(habit, userDetails.getUsername());
+        HabitDTO dto = habitService.createHabit(habit, userDetails.getUsername());
+        URI location = URI.create("/api/habits" + dto.id());
+        return ResponseEntity.created(location).body(dto);
     }
 
-    // TODO: change HabitModel response to DTO
     @PatchMapping(value = "/{id}")
     public HabitDTO updateHabit(
             @PathVariable(name = "id") Long id,
-            @RequestBody UpdateHabitDTO requestBody,
+            @Valid @RequestBody UpdateHabitDTO requestBody,
             @AuthenticationPrincipal UserDetails userDetails) {
         return habitService.updateHabit(id, requestBody, userDetails.getUsername());
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteHabit(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Void> deleteHabit(@PathVariable(name = "id") Long id) {
         habitService.deleteHabit(id);
+        return ResponseEntity.noContent().build();
     }
 }

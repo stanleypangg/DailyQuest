@@ -1,4 +1,11 @@
 package com.dailyquest.dailyquest.habit.dto;
 
-public record CreateHabitDTO(String name, Integer goalCount, String goalPeriod) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record CreateHabitDTO(
+        @NotBlank String name,
+        @NotNull Integer goalCount,
+        @NotBlank String goalPeriod
+) {
 }
