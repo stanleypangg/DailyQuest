@@ -1,6 +1,6 @@
 package com.dailyquest.dailyquest.notification.dto;
 
-import com.dailyquest.dailyquest.notification.event.NotificationStatus;
+import com.dailyquest.dailyquest.notification.enums.NotificationStatus;
 
 import java.time.LocalDateTime;
 

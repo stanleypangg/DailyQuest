@@ -5,10 +5,10 @@ import com.dailyquest.dailyquest.habit.HabitRepo;
 import com.dailyquest.dailyquest.notification.dto.CreateNoficationEventDTO;
 import com.dailyquest.dailyquest.notification.dto.NotificationEventDTOMapper;
 import com.dailyquest.dailyquest.notification.dto.NotificationEventDTO;
+import com.dailyquest.dailyquest.notification.enums.NotificationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
