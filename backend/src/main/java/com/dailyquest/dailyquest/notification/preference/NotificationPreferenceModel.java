@@ -1,12 +1,11 @@
 package com.dailyquest.dailyquest.notification.preference;
 
 import com.dailyquest.dailyquest.habit.HabitModel;
+import com.dailyquest.dailyquest.notification.dto.settings.NotificationSettingsDTO;
 import com.dailyquest.dailyquest.notification.enums.NotificationChannel;
 import com.dailyquest.dailyquest.notification.enums.NotificationFrequency;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.time.LocalTime;
 
@@ -32,10 +31,8 @@ public class NotificationPreferenceModel {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "habit_id", nullable = false, updatable = false)
     private HabitModel habit;
-    @Lob
-    @Column(name = "settings", columnDefinition = "TEXT")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private String settings;
+    @Transient
+    private NotificationSettingsDTO settings;
 
     public NotificationPreferenceModel() {
     }
@@ -46,7 +43,7 @@ public class NotificationPreferenceModel {
             Integer leadTimeMinutes,
             boolean enabled,
             HabitModel habit,
-            String settings
+            NotificationSettingsDTO settings
     ) {
         this.channel = channel;
         this.frequency = frequency;
@@ -118,5 +115,13 @@ public class NotificationPreferenceModel {
 
     public void setHabit(HabitModel habit) {
         this.habit = habit;
+    }
+
+    public NotificationSettingsDTO getSettings() {
+        return settings;
+    }
+
+    public void setSettings(NotificationSettingsDTO settings) {
+        this.settings = settings;
     }
 }
