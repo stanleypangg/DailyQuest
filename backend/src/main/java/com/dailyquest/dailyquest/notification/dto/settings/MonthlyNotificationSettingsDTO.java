@@ -5,5 +5,5 @@ import java.time.LocalTime;
 public record MonthlyNotificationSettingsDTO(
         Integer dayOfMonth,
         LocalTime time
-) {
+) implements NotificationSettingsDTO {
 }

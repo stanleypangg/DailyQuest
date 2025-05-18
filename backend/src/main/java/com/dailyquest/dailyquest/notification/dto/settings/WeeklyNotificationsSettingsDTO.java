@@ -6,5 +6,5 @@ import java.time.LocalTime;
 public record WeeklyNotificationsSettingsDTO(
         DayOfWeek dayOfWeek,
         LocalTime time
-) {
+) implements NotificationSettingsDTO{
 }

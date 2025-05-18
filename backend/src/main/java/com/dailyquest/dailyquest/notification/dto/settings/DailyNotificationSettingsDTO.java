@@ -4,5 +4,5 @@ import java.time.LocalTime;
 
 public record DailyNotificationSettingsDTO(
         LocalTime time
-) {
+) implements NotificationSettingsDTO {
 }

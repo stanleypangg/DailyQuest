@@ -5,6 +5,8 @@ import com.dailyquest.dailyquest.notification.enums.NotificationChannel;
 import com.dailyquest.dailyquest.notification.enums.NotificationFrequency;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalTime;
 
@@ -30,11 +32,29 @@ public class NotificationPreferenceModel {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "habit_id", nullable = false, updatable = false)
     private HabitModel habit;
+    @Lob
+    @Column(name = "settings", columnDefinition = "TEXT")
+    @JdbcTypeCode(SqlTypes.JSON)
+    private String settings;
 
     public NotificationPreferenceModel() {
     }
 
-
+    public NotificationPreferenceModel(
+            NotificationChannel channel,
+            NotificationFrequency frequency,
+            Integer leadTimeMinutes,
+            boolean enabled,
+            HabitModel habit,
+            String settings
+    ) {
+        this.channel = channel;
+        this.frequency = frequency;
+        this.leadTimeMinutes = leadTimeMinutes;
+        this.enabled = enabled;
+        this.habit = habit;
+        this.settings = settings;
+    }
 
     public Long getId() {
         return id;

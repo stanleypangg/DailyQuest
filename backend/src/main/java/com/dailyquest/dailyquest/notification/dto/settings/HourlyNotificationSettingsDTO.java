@@ -7,5 +7,5 @@ public record HourlyNotificationSettingsDTO(
         LocalTime endTime,
         Integer interval,
         Integer randomizationWindow
-) {
+) implements NotificationSettingsDTO {
 }
