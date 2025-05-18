@@ -29,8 +29,8 @@ public class NotificationEventService {
         HabitModel habit = habitRepo.findById(request.id())
                 .orElseThrow(() -> new RuntimeException("Habit not found")); //TODO add custom exception
 
-        NotificationEventModel event = new NotificationEventModel(habit, request.scheduledTime(), request.); // Example lead time
-        return eventRepo.save(event);
+        NotificationEventModel event = new NotificationEventModel(habit, request.scheduledTime()); // Example lead time
+        eventRepo.save(event);
 
         return notificationEventDTOMapper.apply(event);
     }
