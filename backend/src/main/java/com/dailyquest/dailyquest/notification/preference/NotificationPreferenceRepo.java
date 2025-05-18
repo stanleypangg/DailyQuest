@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface NotificationPreferenceRepo extends JpaRepository<NotificationPreferenceModel, Long> {
-    List<NotificationPreferenceModel> findByUserProfileUserUsername(String username);
-    Optional<NotificationPreferenceModel> findByUserProfileUserUsernameAndId(String username, Long id);
-    long deleteByUserProfileUserUsernameAndId(String username, Long id);
+    List<NotificationPreferenceModel> findByHabitUserUsername(String username);
+    Optional<NotificationPreferenceModel> findByHabitUserUsernameAndId(String username, Long id);
+    long deleteByHabitUserUsernameAndId(String username, Long id);
 }

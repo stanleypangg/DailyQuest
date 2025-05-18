@@ -29,7 +29,7 @@ public class NotificationPreferenceService {
     }
 
     public List<NotificationPreferenceDTO> findAllPreferences(String username) {
-        return notificationPreferenceRepo.findByUserProfileUserUsername(username)
+        return notificationPreferenceRepo.findByHabitUserUsername(username)
                 .stream()
                 .map(notificationPreferenceDTOMapper)
                 .collect(Collectors.toList());
@@ -37,7 +37,7 @@ public class NotificationPreferenceService {
 
     public NotificationPreferenceDTO findPreferenceById(Long id, String username) {
         NotificationPreferenceModel notificationPreferenceModel =
-                notificationPreferenceRepo.findByUserProfileUserUsernameAndId(username, id)
+                notificationPreferenceRepo.findByHabitUserUsernameAndId(username, id)
                         .orElseThrow(() -> new NotificationPreferenceNotFoundException(id));
         return notificationPreferenceDTOMapper.apply((notificationPreferenceModel));
     }
@@ -53,11 +53,12 @@ public class NotificationPreferenceService {
         } catch (IOException e) {
             throw new RuntimeException("Error serializing to JSON " + e);
         }
+        // TODO: fix this up
         return null;
     }
 
     public void deletePreference(long id, String username) {
-        if (notificationPreferenceRepo.deleteByUserProfileUserUsernameAndId(username, id) == 0) {
+        if (notificationPreferenceRepo.deleteByHabitUserUsernameAndId(username, id) == 0) {
             throw new NotificationPreferenceNotFoundException(id);
         }
     }
