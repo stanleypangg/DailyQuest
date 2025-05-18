@@ -41,8 +41,9 @@ public class ActivityController {
     @PatchMapping(value = "/{id}")
     public ActivityModel updateActivity(
             @PathVariable(name = "id") Long id,
-            @Valid @RequestBody UpdateActivityDTO requestBody) {
-        return activityService.updateActivity(id, requestBody);
+            @Valid @RequestBody UpdateActivityDTO requestBody,
+            @AuthenticationPrincipal UserDetails userDetails) {
+        return activityService.updateActivity(id, requestBody, userDetails.getUsername());
     }
 
     @DeleteMapping(value = "/{id}")

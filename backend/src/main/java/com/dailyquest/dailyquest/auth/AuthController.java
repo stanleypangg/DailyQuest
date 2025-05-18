@@ -2,6 +2,7 @@ package com.dailyquest.dailyquest.auth;
 
 import com.dailyquest.dailyquest.auth.dto.AuthRequestDto;
 import com.dailyquest.dailyquest.auth.dto.AuthResponseDto;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,7 +23,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequestDto authRequestDto) {
+    public ResponseEntity<?> login(@Valid @RequestBody AuthRequestDto authRequestDto) {
         try {
             AuthResponseDto resp = authService.login(authRequestDto);
             return ResponseEntity.ok(resp);

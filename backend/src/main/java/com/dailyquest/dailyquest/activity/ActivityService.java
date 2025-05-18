@@ -56,10 +56,15 @@ public class ActivityService {
     }
 
     @Transactional
-    public ActivityModel updateActivity(Long id, UpdateActivityDTO requestBody) {
+    public ActivityModel updateActivity(Long id, UpdateActivityDTO requestBody, String username) {
         ActivityModel activityModel = activityRepo.findById(id).orElseThrow(
                 () -> new ActivityDoesNotExistException(id)
         );
+
+        if (!activityModel.getUser().getUsername().equals(username)) {
+            // TODO: custom exception
+            throw new RuntimeException("You do not own this activity");
+        }
 
         if (requestBody.title() != null)
             activityModel.setTitle(requestBody.title());
