@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -37,7 +38,8 @@ public class ActivityController {
             @AuthenticationPrincipal UserDetails userDetails
     ) {
         ActivityDto activity = activityService.createActivity(request, userDetails.getUsername());
-        return ResponseEntity.status(HttpStatus.CREATED).body(activity);
+        URI location = URI.create("/api/activities" + activity.id());
+        return ResponseEntity.created(location).body(activity);
     }
 
     @PatchMapping(value = "/{id}")
@@ -49,7 +51,8 @@ public class ActivityController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteActivity(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Void> deleteActivity(@PathVariable(name = "id") Long id) {
         activityService.deleteActivity(id);
+        return ResponseEntity.noContent().build();
     }
 }
