@@ -1,4 +1,10 @@
 package com.dailyquest.dailyquest.notification.dto;
 
-public record CreateNotificationPreferenceDTO() {
+import com.dailyquest.dailyquest.notification.enums.NotificationChannel;
+import com.dailyquest.dailyquest.notification.enums.NotificationFrequency;
+
+public record CreateNotificationPreferenceDTO(
+        NotificationChannel notificationChannel,
+        NotificationFrequency notificationFrequency
+) {
 }

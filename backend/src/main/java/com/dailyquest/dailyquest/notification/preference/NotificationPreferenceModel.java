@@ -1,9 +1,10 @@
 package com.dailyquest.dailyquest.notification.preference;
 
+import com.dailyquest.dailyquest.habit.HabitModel;
 import com.dailyquest.dailyquest.notification.enums.NotificationChannel;
 import com.dailyquest.dailyquest.notification.enums.NotificationFrequency;
-import com.dailyquest.dailyquest.userprofile.UserProfileModel;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalTime;
 
@@ -15,28 +16,25 @@ public class NotificationPreferenceModel {
     private Long id;
     // Channel: how the user wants to be notified
     @Enumerated(EnumType.STRING)
+    @NotNull
     private NotificationChannel channel;
     @Enumerated(EnumType.STRING)
+    @NotNull
     private NotificationFrequency frequency;
     private Integer leadTimeMinutes;
-    private boolean enabled;
+    @NotNull
+    private boolean enabled = true; // default to true
+    // Are these necessary?
     private LocalTime quietHoursStart;
     private LocalTime quietHoursEnd;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_profile_id", nullable = false, updatable = false)
-    private UserProfileModel userProfile;
+    @JoinColumn(name = "habit_id", nullable = false, updatable = false)
+    private HabitModel habit;
 
     public NotificationPreferenceModel() {
     }
 
-    public NotificationPreferenceModel(NotificationChannel channel, Integer leadTimeMinutes, boolean enabled, LocalTime quietHoursStart, LocalTime quietHoursEnd, UserProfileModel userProfile) {
-        this.channel = channel;
-        this.leadTimeMinutes = leadTimeMinutes;
-        this.enabled = enabled;
-        this.quietHoursStart = quietHoursStart;
-        this.quietHoursEnd = quietHoursEnd;
-        this.userProfile = userProfile;
-    }
+
 
     public Long getId() {
         return id;
@@ -94,11 +92,11 @@ public class NotificationPreferenceModel {
         this.quietHoursEnd = quietHoursEnd;
     }
 
-    public UserProfileModel getUserProfile() {
-        return userProfile;
+    public HabitModel getHabit() {
+        return habit;
     }
 
-    public void setUserProfile(UserProfileModel userProfile) {
-        this.userProfile = userProfile;
+    public void setHabit(HabitModel habit) {
+        this.habit = habit;
     }
 }
