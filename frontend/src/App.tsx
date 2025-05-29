@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react'
+import { Route, Routes } from 'react-router'
+import About from './components/about'
+import Home from './components/home'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <p className='text-red-400'>Hello World</p>
-    </>
+    <Routes>
+      <Route path='/' element={<Home /> } />
+      <Route path='/about' element={<About />} />
+    </Routes>
   )
 }
 
