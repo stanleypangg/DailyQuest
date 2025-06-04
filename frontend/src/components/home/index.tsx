@@ -3,10 +3,13 @@ import React from "react";
 const index = () => {
   return (
     <div className="header" style={{ fontFamily: "JetBrains Mono" }}>
-      <div className="container max-w-[1920px] h-screen m-0 p-0">
-        <nav className="flex justify-between items-center px-[30px]">
+      <nav className="sticky top-0 flex justify-between items-center px-[30px]">
+
           {/* Left-side navigation links */}
-          <ul className="flex gap-[20px] list-none text-[16px] p-0 m-[30px] ml-[60px]">
+          <ul className="flex gap-[20px] list-none text-[16px] p-0 m-[30px] ml-[60px] items-center">
+            <li>
+              <a href="/" ><img src="images\dailyquest logo.png" className="h-7 w-7"></img></a>
+            </li>
             <li>
               <a href="/" className="hover:underline">Home</a>
             </li>
@@ -29,7 +32,9 @@ const index = () => {
           </div>
         </nav>
 
+      <div className="container max-w-[1920px] h-screen m-0 p-0">
         <div className="flex flex-col justify-center gap-5">
+
           {/* Header text */}
           <div className="homeText w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
             Welcome to <span className="font-extrabold">DailyQuest</span>.
@@ -42,10 +47,17 @@ const index = () => {
               Get Started
             </button>
           </a>
-
+          
+          {/* Dashboard image */}
           <section className="text-left max-w-[1200px] mx-auto p-5 border border-gray-300 rounded-lg mt-5">
             <img src='images\dailyquest.png'></img>
           </section>
+        </div>
+        <div className="w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
+          ABOUT
+        </div>
+        <div className="w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
+          CONTACT
         </div>
       </div>
     </div>
