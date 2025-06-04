@@ -20,26 +20,28 @@ const index = () => {
 
           {/* Right-side navigation links */}
           <div>
-            <button className="px-4 py-2 text-[16px]">
-              Sign In
-            </button>
-            <button className="bg-blue-500 text-white px-6 py-3 text-[16px] rounded-md font-bold cursor-pointer">
-              Get Started
-            </button>
+            <button className="px-4 py-2 text-[16px]">Sign In</button>
+            <a href="/register">
+              <button className="bg-blue-500 hover:bg-blue-700 transition duration-300 text-white px-6 py-3 text-[16px] rounded-md font-bold cursor-pointer">
+                Get Started
+              </button>
+            </a>
           </div>
         </nav>
 
         <div className="flex flex-col justify-center gap-5">
           {/* Header text */}
-          <div className="homeText w-fit mx-auto p-5 text-[70px] text-center mt-[150px]">
+          <div className="homeText w-fit mx-auto p-5 text-[70px] text-center mt-[225px]">
             Welcome to <b>Daily Quest.</b>
           </div>
         </div>
 
         <div className="flex flex-col justify-center gap-5 items-center">
-          <button className="bg-blue-500 text-white px-6 py-3 text-[16px] rounded-md font-bold cursor-pointer">
-            Get Started
-          </button>
+          <a href="/register">
+            <button className="bg-blue-500 hover:bg-blue-700 transition duration-300 text-white px-6 py-3 text-[22px] rounded-md font-bold cursor-pointer">
+              Get Started
+            </button>
+          </a>
 
           <section className="text-left max-w-[1100px] mx-auto p-5 border border-gray-300 rounded-lg mt-5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
