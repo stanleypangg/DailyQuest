@@ -24,11 +24,6 @@ const index = () => {
           {/* Right-side navigation links */}
           <div>
             <button className="px-4 py-2 text-[16px] hover:underline">Sign In</button>
-            <a href="/register">
-              <button className="bg-blue-500 hover:bg-blue-700 transition duration-300 text-white px-6 py-2 text-[16px] rounded-md font-bold cursor-pointer">
-                Get Started
-              </button>
-            </a>
           </div>
         </nav>
 
