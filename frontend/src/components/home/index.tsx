@@ -3,30 +3,10 @@ import React from "react";
 const index = () => {
   return (
     <div className="header" style={{ fontFamily: "JetBrains Mono" }}>
-      <div
-        className="container"
-        style={{ maxWidth: "1920px", height: "100vh", margin: 0, padding: 0 }}
-      >
-        <nav
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 30px",
-          }}
-        >
+      <div className="container max-w-[1920px] h-screen m-0 p-0">
+        <nav className="flex justify-between items-center px-[30px]">
           {/* Left-side navigation links */}
-          <ul
-            style={{
-              display: "flex",
-              gap: "20px",
-              listStyle: "none",
-              fontSize: "16px",
-              padding: 0,
-              margin: 30,
-              marginLeft: 60,
-            }}
-          >
+          <ul className="flex gap-[20px] list-none text-[16px] p-0 m-[30px] ml-[60px]">
             <li>
               <a href="/">Home</a>
             </li>
@@ -40,85 +20,28 @@ const index = () => {
 
           {/* Right-side navigation links */}
           <div>
-            <button style={{ padding: "8px 16px", fontSize: "16px" }}>
+            <button className="px-4 py-2 text-[16px]">
               Sign In
             </button>
-            <button
-              style={{
-                backgroundColor: "#007bff",
-                color: "#fff",
-                padding: "12px 24px",
-                fontSize: "16px",
-                border: "none",
-                borderRadius: "6px",
-                cursor: "pointer",
-                fontWeight: "bold",
-              }}
-            >
+            <button className="bg-blue-500 text-white px-6 py-3 text-[16px] rounded-md font-bold cursor-pointer">
               Get Started
             </button>
           </div>
         </nav>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            gap: "20px",
-          }}
-        >
+        <div className="flex flex-col justify-center gap-5">
           {/* Header text */}
-          <div
-            className="homeText"
-            style={{
-              width: "fit-content",
-              margin: "0 auto",
-              padding: "20px",
-              fontSize: "70px",
-              textAlign: "center",
-              marginTop: "150px",
-            }}
-          >
+          <div className="homeText w-fit mx-auto p-5 text-[70px] text-center mt-[150px]">
             Welcome to <b>Daily Quest.</b>
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
-          <button
-            style={{
-              backgroundColor: "#007bff",
-              color: "#fff",
-              padding: "12px 24px",
-              fontSize: "24px",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
+        <div className="flex flex-col justify-center gap-5 items-center">
+          <button className="bg-blue-500 text-white px-6 py-3 text-[16px] rounded-md font-bold cursor-pointer">
             Get Started
           </button>
 
-          <section
-            style={{
-              textAlign: "left",
-              maxWidth: "1100px",
-              margin: "auto",
-              padding: "20px",
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              marginTop: "20px",
-            }}
-          >
+          <section className="text-left max-w-[1100px] mx-auto p-5 border border-gray-300 rounded-lg mt-5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             feugiat tortor lectus, et laoreet lacus pharetra sit amet. Nam ut
             elementum erat, accumsan laoreet massa. Suspendisse ac posuere odio,
