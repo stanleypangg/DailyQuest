@@ -2,7 +2,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <div className="header" style={{ fontFamily: "JetBrains Mono" }}>
+    <div id='main' className="header" style={{ fontFamily: "JetBrains Mono" }}>
       <nav className="bg-white fixed top-0 w-full flex justify-between items-center px-[30px]">
         {/* Left-side navigation links */}
         <ul className="flex gap-[20px] list-none text-[16px] p-0 m-[30px] ml-[60px] items-center">
@@ -12,7 +12,7 @@ const index = () => {
             </a>
           </li>
           <li>
-            <a href="#front" className="hover:underline">
+            <a href="#main" className="hover:underline">
               Home
             </a>
           </li>
@@ -43,7 +43,7 @@ const index = () => {
             id="front"
             className="homeText w-fit mx-auto p-5 text-[80px] text-center mt-[300px]"
           >
-            Welcome to <span className="font-extrabold">DailyQuest</span>.
+            Welcome to <span className="font-bold text-[100px]">DailyQuest</span>.
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const index = () => {
           id="about"
           className="flex flex-col justify-center gap-5 items-center"
         >
-          <div className="bg-black text-white w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
+          <div className="w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
             ABOUT
           </div>
           <div id="row" className="flex justify-between flex-wrap mt-8">
@@ -95,16 +95,27 @@ const index = () => {
           id="contact"
           className="flex flex-col justify-center gap-5 items-center"
         >
-          <div className="bg-black text-white w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
+          <div className="w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
             CONTACT US
           </div>
         </div>
         <div id="row" className="flex justify-between flex-wrap mt-8">
           <div id="contactCol1" className="w-1/2 text-center">
-            ONLINE INQUIRY
+            <span className="text-[24px]">ONLINE INQUIRY</span>
           </div>
           <div id="contactCol2" className="w-1/2 text-center">
-            CONTACT DETAILS
+            <span className="text-[24px]">CONTACT DETAILS</span>
+            <p className="mt-10">
+              Phone: <br></br>
+              123-456-7890 <br></br>
+              <br></br>
+              Email: <br></br>
+              DailyQuest@gmail.com <br></br>
+              <br></br>
+              Location: <br></br>
+              123 go Fuck yourself blvd, G4Y 53X<br></br>
+              <br></br>
+            </p>
           </div>
         </div>
       </div>
