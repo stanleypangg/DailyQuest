@@ -36,8 +36,8 @@ const index = () => {
         </div>
       </nav>
 
-      <div className="container max-w-[1920px] h-screen m-0 p-0">
-        <div className="flex flex-col justify-center gap-5">
+      <div className="container max-w-[1920px] h-screen m-0 p-0 ">
+        <div className="flex flex-col justify-center gap-5 ">
           {/* Header text */}
           <div
             id="front"
@@ -60,42 +60,51 @@ const index = () => {
           </section>
         </div>
         {/* About Section */}
-        <div id="about" className="flex flex-col justify-center gap-5 items-center">
-          <div className="bg-black text-white w-full mx-auto p-5 text-[80px] text-center mt-[225px]">
+        <div
+          id="about"
+          className="flex flex-col justify-center gap-5 items-center"
+        >
+          <div className="bg-black text-white w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
             ABOUT
           </div>
-          <div id='row' className="flex justify-between flex-wrap mt-8">
-            <div id='aboutCol1' className="max-w-[1200px] text-[20px] w-1/2">
-              <span className="font-extrabold text-[24px]">Build habits. Stay consistent. Level up your life.</span> <br></br>
+          <div id="row" className="flex justify-between flex-wrap mt-8">
+            <div id="aboutCol1" className="max-w-[1200px] text-[20px] w-1/2">
+              <span className="font-extrabold text-[24px]">
+                Build habits. Stay consistent. Level up your life.
+              </span>{" "}
               <br></br>
-              DailyQuest is your personal habit-tracking companion designed to help you stay
-              accountable and build routines that stick. Whether you're aiming for
-              healthier habits, increased productivity, or personal growth,
-              DailyQuest transforms your daily goals into a journey of progress. <br></br>
+              <br></br>
+              DailyQuest is your personal habit-tracking companion designed to
+              help you stay accountable and build routines that stick. Whether
+              you're aiming for healthier habits, increased productivity, or
+              personal growth, DailyQuest transforms your daily goals into a
+              journey of progress. <br></br>
               <br></br>
               With intuitive tracking, smart reminders, and a rewarding
-              experience, DailyQuest turns habit-building into an adventure—where
-              every small win gets you closer to long-term success.  <br></br>
+              experience, DailyQuest turns habit-building into an
+              adventure—where every small win gets you closer to long-term
+              success. <br></br>
               <br></br>
               Start your quest today and make consistency your superpower!
             </div>
-            <div id='aboutCol2' className="w-1/2">
-              
-            </div>
+            <div id="aboutCol2" className="w-1/2"></div>
           </div>
         </div>
         {/* Contact Section */}
-        <div id="contact" className="flex flex-col justify-center gap-5 items-center">
-          <div className=" bg-black text-white w-full mx-auto p-5 text-[80px] text-center mt-[225px]">
-            CONTACT
+        <div
+          id="contact"
+          className="flex flex-col justify-center gap-5 items-center"
+        >
+          <div className="bg-black text-white w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
+            CONTACT US
           </div>
         </div>
-        <div id='row' className="flex justify-between flex-wrap mt-8">
+        <div id="row" className="flex justify-between flex-wrap mt-8">
           <div id="contactCol1" className="w-1/2 text-center">
-            div 1
+            ONLINE INQUIRY
           </div>
           <div id="contactCol2" className="w-1/2 text-center">
-            div 2
+            CONTACT DETAILS
           </div>
         </div>
       </div>
