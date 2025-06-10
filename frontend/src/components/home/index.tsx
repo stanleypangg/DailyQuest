@@ -2,7 +2,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <div id='main' className="header" style={{ fontFamily: "JetBrains Mono" }}>
+    <div id="main" className="header " style={{ fontFamily: "JetBrains Mono" }}>
       <nav className="bg-white fixed top-0 w-full flex justify-between items-center px-[30px]">
         {/* Left-side navigation links */}
         <ul className="flex gap-[20px] list-none text-[16px] p-0 m-[30px] ml-[60px] items-center">
@@ -43,7 +43,8 @@ const index = () => {
             id="front"
             className="homeText w-fit mx-auto p-5 text-[80px] text-center mt-[300px]"
           >
-            Welcome to <span className="font-bold text-[100px]">DailyQuest</span>.
+            Welcome to{" "}
+            <span className="font-bold text-[100px]">DailyQuest</span>.
           </div>
         </div>
 
@@ -67,8 +68,11 @@ const index = () => {
           <div className="w-fit mx-auto p-5 text-[80px] text-center mt-[225px]">
             ABOUT
           </div>
-          <div id="row" className="flex justify-between flex-wrap mt-8">
-            <div id="aboutCol1" className="max-w-[1200px] text-[20px] w-1/2">
+          <div
+            id="row"
+            className="flex justify-between flex-wrap mt-8 ml-80 mr-80"
+          >
+            <div id="aboutCol1" className="max-w-[1200px] text-[18px] w-1/2">
               <span className="font-extrabold text-[24px]">
                 Build habits. Stay consistent. Level up your life.
               </span>{" "}
@@ -87,7 +91,12 @@ const index = () => {
               <br></br>
               Start your quest today and make consistency your superpower!
             </div>
-            <div id="aboutCol2" className="w-1/2"></div>
+            <div
+              id="aboutCol2"
+              className="flex items-center justify-center w-1/2 mx-auto"
+            >
+              <img src="images\jogging.jpg" className="w-[500px]"></img>
+            </div>
           </div>
         </div>
         {/* Contact Section */}
@@ -102,8 +111,20 @@ const index = () => {
         <div id="row" className="flex justify-between flex-wrap mt-8">
           <div id="contactCol1" className="w-1/2 text-center">
             <span className="text-[24px]">ONLINE INQUIRY</span>
+            <div className="grid gap-6 mb-6 ml-56 mr-56">
+              <label htmlFor="first_name" className="block mt-10 text-left">
+                First name
+              </label>
+              <input
+                type="text"
+                id="first_name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="John"
+                required
+              />
+            </div>
           </div>
-          <div id="contactCol2" className="w-1/2 text-center">
+          <div id="contactCol2" className="w-1/2 text-center mb-40">
             <span className="text-[24px]">CONTACT DETAILS</span>
             <p className="mt-10">
               Phone: <br></br>
@@ -113,11 +134,57 @@ const index = () => {
               DailyQuest@gmail.com <br></br>
               <br></br>
               Location: <br></br>
-              123 go Fuck yourself blvd, G4Y 53X<br></br>
+              Toronto, ON<br></br>
               <br></br>
             </p>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="bg-black">
+          <div className="mx-auto w-full max-w-screen-xl p-4 md:py-8">
+            <div className="sm:flex sm:items-center sm:justify-between">
+              <a
+                href=""
+                className="flex items-center mb-4 sm:mb-0 space=x=3 rtl:space-x-reverse"
+              >
+                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                  DailyQuest
+                </span>
+              </a>
+              <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0">
+                <li>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    Licensing
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span className="block text-sm text-white sm:text-center dark:text-gray-400">
+              © 2025{" "}
+              <a href="#" className="hover:underline">
+                DailyQuest™
+              </a>
+              . All Rights Reserved.
+            </span>
+          </div>
+        </footer>
       </div>
     </div>
   );
