@@ -17,6 +17,11 @@ const index = () => {
             </a>
           </li>
           <li>
+            <a href="#" className="hover:underline">
+              Features
+            </a>
+          </li>
+          <li>
             <a href="#about" className="hover:underline">
               About
             </a>
@@ -32,6 +37,10 @@ const index = () => {
         <div>
           <button className="px-4 py-2 text-[16px] hover:underline">
             Sign In
+          </button>
+          /
+          <button className="px-4 py-2 text-[16px] hover:underline">
+            Register
           </button>
         </div>
       </nav>
@@ -108,23 +117,8 @@ const index = () => {
             CONTACT US
           </div>
         </div>
-        <div id="row" className="flex justify-between flex-wrap mt-8">
-          <div id="contactCol1" className="w-1/2 text-center">
-            <span className="text-[24px]">ONLINE INQUIRY</span>
-            <div className="grid gap-6 mb-6 ml-56 mr-56">
-              <label htmlFor="first_name" className="block mt-10 text-left">
-                First name
-              </label>
-              <input
-                type="text"
-                id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="John"
-                required
-              />
-            </div>
-          </div>
-          <div id="contactCol2" className="w-1/2 text-center mb-40">
+        <div className="flex justify-center flex-wrap mt-8">
+          <div className="w-1/2 text-center mb-40">
             <span className="text-[24px]">CONTACT DETAILS</span>
             <p className="mt-10">
               Phone: <br></br>
