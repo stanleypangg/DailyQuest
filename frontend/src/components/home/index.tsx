@@ -33,15 +33,19 @@ const index = () => {
           </li>
         </ul>
 
-        {/* Right-side navigation links */}
+        {/* Right-side navigation links */} 
         <div>
-          <button className="px-4 py-2 text-[16px] hover:underline">
-            Sign In
-          </button>
+          <a href="">
+            <button className="px-4 py-2 text-[16px] hover:underline">
+              Sign In
+            </button>
+          </a>
           /
-          <button className="px-4 py-2 text-[16px] hover:underline">
-            Register
-          </button>
+          <a href="/register">
+            <button className="px-4 py-2 text-[16px] hover:underline">
+              Register
+            </button>
+          </a>
         </div>
       </nav>
 
