@@ -1,0 +1,17 @@
+#grid-container{ 
+    grid-template-areas:
+        "sidebar header header header"
+        "sidebar main main main";
+}
+
+#header{
+    grid-area: header;
+}
+
+#sidebar{
+    grid-area: sidebar;
+}
+
+#main-container{ 
+    grid-area: main;
+}

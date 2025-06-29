@@ -7,7 +7,7 @@ const index = () => {
         {/* Left-side navigation links */}
         <ul className="flex gap-[20px] list-none text-[16px] p-0 m-[30px] ml-[60px] items-center">
           <li>
-            <a href="/">
+            <a href="/dashboard">
               <img src="images\dailyquest logo.png" className="h-7 w-7"></img>
             </a>
           </li>
