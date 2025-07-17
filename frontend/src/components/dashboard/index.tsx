@@ -1,28 +1,77 @@
-import React from 'react'
-import "./index.css"
+import React from 'react';
+import './index.css';
 
-const index = () => {
+const Dashboard = () => {
   return (
-    <body className='m-0 p-0' style={{ fontFamily: "JetBrains Mono" }}>
-        <div id='grid-container' className='grid grid-cols-[260px_1fr_1fr_1fr] grid-rows-[0.2fr_3fr] h-screen'>
+    <div className="m-0 p-0 font-['JetBrains_Mono']">
+      <div
+        id="grid-container"
+        className="grid grid-cols-[260px_1fr_1fr_1fr] grid-rows-[70px_1fr] h-screen"
+      >
+        {/* Header */}
+        <header
+          id="header"
+          className="bg-gray-400 flex items-center justify-between px-8 shadow-[0_6px_7px_-3px_rgba(0,0,0,0.35)]"
+        >
+          <h1 className="text-xl font-bold">DailyQuest Dashboard</h1>
+          <div className="flex items-center gap-4">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+              Log Out
+            </button>
+          </div>
+        </header>
 
-            {/* Header */}
-            <header id='header' className='h-[70px] bg-gray-400 flex items-center justify-between p-[0_30px_0_30px] shadow-[0_6px_7px_-3px_rgba(0,0,0,0.35)]'>
-                <div> 
-                </div>
-            </header>
+        {/* Sidebar */}
+        <aside
+          id="sidebar"
+          className="bg-gray-300 overflow-y-auto transition-all duration-500 p-6"
+        >
+          <nav className="flex flex-col gap-4">
+            <a href="#" className="text-lg hover:text-blue-600 transition">
+              📊 Overview
+            </a>
+            <a href="#" className="text-lg hover:text-blue-600 transition">
+              ✅ Habits
+            </a>
+            <a href="#" className="text-lg hover:text-blue-600 transition">
+              📈 Progress
+            </a>
+            <a href="#" className="text-lg hover:text-blue-600 transition">
+              ⚙️ Settings
+            </a>
+          </nav>
+        </aside>
 
-            {/* Sidebar */}
-            <aside id='sidebar' className='h-full bg-gray-300 overflow-y-auto transition-all duration-[0.5s]'>
-            </aside>
+        {/* Main Content */}
+        <main
+          id="main-container"
+          className="bg-gray-200 overflow-y-auto p-6"
+        >
+          <section className="mb-6">
+            <h2 className="text-2xl font-semibold mb-2">Welcome back!</h2>
+            <p className="text-gray-700">
+              Here's your habit progress for today.
+            </p>
+          </section>
 
-            {/* Main */}
-            <main id='main-container' className='bg-gray-200 overflow-y-auto p-[20px_20px] '>
-            </main>
+          <section className="grid grid-cols-3 gap-6">
+            <div className="bg-white p-4 rounded shadow-md">
+              <h3 className="text-lg font-bold mb-2">🧘 Meditation</h3>
+              <p>Completed 3 of 7 days</p>
+            </div>
+            <div className="bg-white p-4 rounded shadow-md">
+              <h3 className="text-lg font-bold mb-2">🏃 Exercise</h3>
+              <p>Completed 5 of 7 days</p>
+            </div>
+            <div className="bg-white p-4 rounded shadow-md">
+              <h3 className="text-lg font-bold mb-2">📚 Reading</h3>
+              <p>Completed 6 of 7 days</p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+};
 
-        </div>
-    </body>
-  )
-}
-
-export default index
+export default Dashboard;

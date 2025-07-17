@@ -1,18 +1,18 @@
-#grid-container{ 
-    grid-template-areas:
-        "sidebar header header header"
-        "sidebar main main main";
+#grid-container {
+  grid-template-areas:
+    "sidebar header header header"
+    "sidebar main main main";
 }
 
-#header{
-    grid-area: header;
+#header {
+  grid-area: header;
 }
 
-#sidebar{
-    grid-area: sidebar;
-    -webkit-transition: all 0.5s;
+#sidebar {
+  grid-area: sidebar;
+  -webkit-transition: all 0.5s;
 }
 
-#main-container{ 
-    grid-area: main;
+#main-container {
+  grid-area: main;
 }
