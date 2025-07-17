@@ -1,5 +1,5 @@
-import React from 'react';
-import './index.css';
+import React from "react";
+import "./index.css";
 
 const Dashboard = () => {
   return (
@@ -11,10 +11,10 @@ const Dashboard = () => {
         {/* Header */}
         <header
           id="header"
-          className="bg-gray-400 flex items-center justify-between px-8 shadow-[0_6px_7px_-3px_rgba(0,0,0,0.35)]"
+          className="bg-white flex items-center justify-between px-8 shadow-[0_6px_7px_-3px_rgba(0,0,0,0.35)]"
         >
           <h1 className="text-xl font-bold">DailyQuest Dashboard</h1>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 shadow-md">
             <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
               Log Out
             </button>
@@ -24,7 +24,7 @@ const Dashboard = () => {
         {/* Sidebar */}
         <aside
           id="sidebar"
-          className="bg-gray-300 overflow-y-auto transition-all duration-500 p-6"
+          className="bg-white overflow-y-auto transition-all duration-500 p-6 shadow-md"
         >
           <nav className="flex flex-col gap-4">
             <a href="#" className="text-lg hover:text-blue-600 transition">
@@ -45,7 +45,7 @@ const Dashboard = () => {
         {/* Main Content */}
         <main
           id="main-container"
-          className="bg-gray-200 overflow-y-auto p-6"
+          className="bg-white overflow-y-auto p-6 shadow-md"
         >
           <section className="mb-6">
             <h2 className="text-2xl font-semibold mb-2">Welcome back!</h2>
